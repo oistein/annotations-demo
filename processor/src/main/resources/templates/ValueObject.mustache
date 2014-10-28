@@ -1,0 +1,23 @@
+package {{packageName}};
+
+import javax.annotation.Generated;
+
+@Generated(value = "no.norgesgruppen.demo.GetterSetterProcessor")
+@SuppressWarnings("all")
+public class {{className}} extends {{inheritedClassName}} {
+
+{{#gettersetters}}
+{{#getter}}
+    {{visibility}} {{type}} get{{nameCamel}}() {
+        return this.{{name}};
+    }
+
+{{/getter}}
+{{#setter}}
+    {{visibility}} void set{{nameCamel}}({{type}} {{name}}) {
+        this.{{name}} = {{name}};
+    }
+
+{{/setter}}
+{{/gettersetters}}
+}

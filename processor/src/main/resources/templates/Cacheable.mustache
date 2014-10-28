@@ -1,0 +1,25 @@
+package {{packageName}};
+
+import javax.annotation.Generated;
+import java.util.HashMap;
+import java.util.Map;
+
+@Generated(value = "no.norgesgruppen.demo.CacheableProcessor")
+@SuppressWarnings("all")
+public class {{className}} extends {{inheritedClassName}} {
+
+{{#cacheables}}
+    private Map<{{keyClass}}, {{& returnType}}> {{cache}} = new HashMap<{{keyClass}}, {{& returnType}}>();
+
+    @Override
+    {{visibility}} {{& returnType}} {{method}}({{typeArgs}}) {
+        {{keyClass}} key = new {{keyClass}}({{arguments}});
+        if ({{cache}}.containsKey(key)) {
+            return {{cache}}.get(key);
+        }
+        {{& returnType}} value = super.{{method}}({{arguments}});
+        {{cache}}.put(key, value);
+        return value;
+    }
+{{/cacheables}}
+}

@@ -1,0 +1,17 @@
+package {{packageName}};
+
+import javax.annotation.Generated;
+
+@Generated(value = "no.norgesgruppen.demo.CacheableProcessor")
+@SuppressWarnings("all")
+class {{keyClass}} {
+    {{#allFields}}
+    {{type}} {{name}};
+    {{/allFields}}
+
+    {{keyClass}}({{typeArgs}}) {
+        {{#allFields}}
+        this.{{name}} = {{name}};
+        {{/allFields}}
+    }
+}
